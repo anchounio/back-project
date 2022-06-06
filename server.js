@@ -5,7 +5,6 @@ const { PORT } = process.env;
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
-const newExercise = require('./controllers/exercises/newExercise');
 
 const app = express();
 
@@ -35,5 +34,5 @@ const isAdmin = require('./middlewares/isAdmin');
 
 const { newExercise } = require('./controllers/exercises');
 
-// Crear un ejercicios.
-app.post('/exercise', newExercise);
+// Crear un ejercicio.
+app.post('/exercise', authUser, isAdmin, newExercise);
