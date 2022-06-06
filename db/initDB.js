@@ -16,7 +16,7 @@ async function main() {
                 name VARCHAR(20) NOT NULL,
                 email VARCHAR(40) UNIQUE NOT NULL,
                 password VARCHAR(20) NOT NULL,
-                role VARCHAR(10) NOT NULL,
+                role ENUM ("admin", "normal") DEFAULT "normal",
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
