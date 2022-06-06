@@ -36,3 +36,17 @@ const { newExercise } = require('./controllers/exercises');
 
 // Crear un ejercicio.
 app.post('/exercise', authUser, isAdmin, newExercise);
+
+/**
+ * #####################
+ * ## Endpoints Users ##
+ * #####################
+ */
+
+const { newUser, loginUser } = require('./controllers/users');
+
+// registrar un usuario
+app.post('/users', newUser);
+
+// logueo de usuarios
+app.post('/login', loginUser);
