@@ -2,75 +2,54 @@
 
 Aplicación para organizar internamente los entrenamientos en un gimnasio.
 
-Se trata de una API que permita publicar ejercicios para la gestión de los mismos en un gimnasio. Los usuarios serán los trabajadores del gimnasio.
-
 # Características
 
-- Se diferencian dos tipos de usuarios: "admin" y "normal".
-
-- Solo el administrador (propietario del bar o jefe de sala) puede dar de alta a
-  otros usuarios (camareros), que por defecto serán de tipo "normal".
-
-- Los clientes no necesitan usuario, navegarán de forma anónima desde un terminal
-  ubicado en cada una de las mesas del local.
-
-- Los clientes no podrán hacer la solicitud de bebidas desde el terminal, deberán
-  llamar al camarero y comunicárselo verbalmente.
-
-- Del mismo modo los clientes deberán solicitar la cuenta al camarero cuando quieran
-  pagar.
+Se trata de una API que permita publicar ejercicios para la gestión de los mismos en un gimnasio. Los usuarios serán los trabajadores del gimnasio.
 
 # Entidades en la base de datos
 
-- [users] - Pueden ser de tipo "admin" (propietario del bar) o "normal" (camareros).
+- [users] - Pueden ser de tipo "admin" o "normal" (trabajadores).
 
   - id
   - name
+  - email
+  - password
   - role
   - createdAt
 
-- [exercises] - Contiene información acerca de las mesas del local.
-
-  - id
-  - request
-  - pay
-  - attended
-  - createdAt
-
-- [drinks] - Lista de bebidas que se sirven en el establecimiento.
+- [exercises] - Contiene información acerca de los ejercicios
 
   - id
   - name
+  - description
+  - photo
+  - typology
+  - muscularGroup
   - createdAt
 
-# Endpoints bebidas
+- [exercisesUsers] - Tabla de relación m/n de las 2 anteriores. Se utiliza como contador de likes que los usuarios den a los ejercicios.
+  - id
+  - idUsers
+  - idExercises
+  - likes
+  - createdAt
 
-- GET - [/drinks] - Mostrar listado de bebidas.
-- POST - [/drink] - Registrar una nueva bebida. **CON TOKEN - ADMIN** ✅
-- DELETE - [/drinks/:idDrink] - Eliminar una bebida. **CON TOKEN - ADMIN** ✅
+# Endpoints users
 
-# Endpoints mesas
+- POST - [/user/login] - Logarse.
 
-- POST - [/table] - Registrar una nueva mesa. **CON TOKEN - ADMIN**
+- POST - [/user/register] - Registrarse.
 
-- PUT - [/table/:idTable/request] - Solicitar la atención de un camarero o camarera disponible.
-  Cambia el atributo `request` a `true`.
+# Endpoints exercises
 
-- PUT - [/table/:idTable/pay] - Solicitar la cuenta. Cambia el atributo `pay` a `true`.
+- POST - [/exercise] - Registrar un nuevo ejercicio. **CON TOKEN - ADMIN** ✅
 
-- PUT - [/table/:idTable/attend] - Atender una solicitud de atención o de cobro.
-  Cambia el atributo `attend` a `true`. **CON TOKEN**
+- PUT - [/exercise] - Modificar un ejercicio. **CON TOKEN - ADMIN** ✅
 
-- PUT - [/table/:idTable/request/end] - Finalizar una solicitud de atención.
-  Cambia los atributos `request` y `attend` a `false`. **CON TOKEN**
+- DELETE - [/exercise] - Eliminar un ejercicio. **CON TOKEN - ADMIN** ✅
 
-- PUT - [/table/:idTable/pay/end] - Finalizar una solicitud de cuenta.
-  Cambia los atributos `pay` y `attend` a `false`. **CON TOKEN**
+- GET - [/exercises] - Ver listado de los ejercicios. **CON TOKEN**
 
-- DELETE - [/table/:idTable] - Eliminar una mesa. **CON TOKEN**
+- PUT - [/exercise/:idExercise/like] - Dar o quitar like **CON TOKEN**
 
-# Endpoints usuarios
-
-- POST - [/login] - Logea a un usuario válido y retorna un token. ✅
-- POST - [/user/register] - Registrar un nuevo usuario normal (camarero). **CON TOKEN - ADMIN**
-- DELETE - [/user/:idUser] - Eliminar un usuario (no se puede eliminar al usuario administrador). **CON TOKEN - ADMIN**
+- GET - [/exercises/category] - Filtrar por categoria **CON TOKEN**
