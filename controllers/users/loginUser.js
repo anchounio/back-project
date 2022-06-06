@@ -14,12 +14,9 @@ const loginUser = async (req, res, next) => {
         // obtenemos el usuario con el mail del body
         const user = await selectUserByEmailQuery(email);
 
-        console.log(user);
         // comprobamos que las contraseñas coinciden
         const validPassword = await bcrypt.compare(password, user.password);
 
-        console.log(password);
-        console.log(user.password);
         // si no coinciden, error
         if (!validPassword) {
             throw generateError('Contraseña incorrecta', 401);

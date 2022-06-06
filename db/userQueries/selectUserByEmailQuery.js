@@ -9,7 +9,7 @@ const selectUserByEmailQuery = async (email) => {
 
         // se crea el array de usuarios con ese email
         const [users] = await connection.query(
-            `SELECT id, email, password FROM users WHERE email = ?`,
+            `SELECT id, email, password, role FROM users WHERE email = ?`,
             [email]
         );
 
