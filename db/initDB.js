@@ -19,7 +19,7 @@ async function main() {
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 name VARCHAR(20) NOT NULL,
                 email VARCHAR(40) UNIQUE NOT NULL,
-                password VARCHAR(20) NOT NULL,
+                password VARCHAR(100) NOT NULL,
                 role ENUM ("admin", "normal") DEFAULT "normal",
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
