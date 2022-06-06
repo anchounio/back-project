@@ -4,15 +4,15 @@ const { generateError } = require('../../helpers');
 const newUser = async (req, res, next) => {
   try {
     // obtenemos los campos del body
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
     // si faltan campos, error
-    if (!email || !password) {
+    if (!name || !email || !password) {
       throw generateError('Faltan campos', 400);
     }
 
     // creamos un usuario y obtenemos su id
-    const idUser = await insertUserQuery(email, password);
+    const idUser = await insertUserQuery(name, email, password);
 
     res.send({
       status: 'ok',
