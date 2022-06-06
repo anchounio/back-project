@@ -8,9 +8,9 @@ async function main() {
 
     console.log('Borrando las tablas existentes...');
 
+    await connection.query('DROP TABLE IF EXISTS exercisesUsers');
     await connection.query('DROP TABLE IF EXISTS exercises');
     await connection.query('DROP TABLE IF EXISTS users');
-    await connection.query('DROP TABLE IF EXISTS exercisesUsers');
 
     console.log('Creando tablas...');
 
