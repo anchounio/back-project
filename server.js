@@ -50,3 +50,8 @@ app.post('/users', newUser);
 
 // logueo de usuarios
 app.post('/login', loginUser);
+
+// Ponemos el servidor a escuchar peticiones:
+app.listen(PORT, () => {
+  console.log(`Server listening http://localhost:${PORT}`);
+});
