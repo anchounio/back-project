@@ -51,7 +51,35 @@ app.post('/users', newUser);
 // logueo de usuarios
 app.post('/login', loginUser);
 
+/**
+ * ######################
+ * ## Middleware Error ##
+ * ######################
+ */
+
+app.use((err, req, res, next) => {
+    console.error(err);
+
+    res.status(err.statusCode || 500).send({
+        status: 'error',
+        message: err.message,
+    });
+});
+
+/**
+ * ##########################
+ * ## Middleware Not Found ##
+ * ##########################
+ */
+
+app.use((req, res) => {
+    res.status(404).send({
+        status: 'error',
+        message: 'Not found',
+    });
+});
+
 // Ponemos el servidor a escuchar peticiones:
 app.listen(PORT, () => {
-  console.log(`Server listening http://localhost:${PORT}`);
+    console.log(`Server listening http://localhost:${PORT}`);
 });
