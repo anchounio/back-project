@@ -1,12 +1,12 @@
 const getConnection = require('../getConnection');
 
 const updateExerciseQuery = async (
-    idExercise,
     name,
     description,
     typology,
     muscularGroup,
-    photo = ''
+    photo = '',
+    idExercise
 ) => {
     let connection;
 
