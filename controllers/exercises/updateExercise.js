@@ -2,9 +2,10 @@ const path = require('path');
 const sharp = require('sharp');
 const { nanoid } = require('nanoid');
 
+const selectExerciseById = require('../../db/exercisesQueries/selectExerciseByIdQuerie');
 const updateExerciseQuery = require('../../db/exercisesQueries/updateExerciseQuery');
 
-const { createPathIfNotExists } = require('../../helpers');
+const { createPathIfNotExists, deletePhoto } = require('../../helpers');
 
 const updateExercise = async (req, res, next) => {
     try {
@@ -12,7 +13,6 @@ const updateExercise = async (req, res, next) => {
         const { name, description, typology, muscularGroup } = req.body;
 
         // PARA LA FOTO:
-
         // Si existe alguna imagen, la guardaremos en una carpeta de nuestra base de datos.
 
         // Variable donde almacenaremos el nombre con el que guardaremos la imagen
@@ -20,6 +20,14 @@ const updateExercise = async (req, res, next) => {
         let imgName;
 
         if (req.files && req.files.photo) {
+            // Obtenemos la info del ejercicio.
+            const exercise = await selectExerciseById(idExercise);
+
+            // Si el ejercicio tiene vinculada una imagen la eliminamos del disco.
+            if (exercise.photo) {
+                await deletePhoto(exercise.photo);
+            }
+
             // Creamos una ruta absoluta al directorio de descargas.
             const uploadsDir = path.join(__dirname, '..', '..', 'uploads');
 
