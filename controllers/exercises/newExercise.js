@@ -8,11 +8,12 @@ const { generateError, createPathIfNotExists } = require('../../helpers');
 
 const newExercise = async (req, res, next) => {
     try {
-        // Obtenemos los campos del body.
-        const { name, description, tipology, muscularGroup } = req.body;
+        // Obtenemos los campos del body. Estos datos van a ser obligatorios
+        // para poder crear un ejercicios. Son todos menos la foto, esta es opcional.
+        const { name, description, typology, muscularGroup } = req.body;
 
         // Si faltan campos lanzamos un error. Todos obligatorios menos foto.
-        if (!name || !description || !tipology || !muscularGroup) {
+        if (!name || !description || !typology || !muscularGroup) {
             throw generateError('Faltan campos', 400);
         }
 
@@ -53,8 +54,7 @@ const newExercise = async (req, res, next) => {
         }
 
         // Creamos un nuevo ejercicio en la base de datos.
-        // Agregamos el tweet.
-        insertExercise(name, description, tipology, muscularGroup, photoName);
+        insertExercise(name, description, typology, muscularGroup, photoName);
 
         res.send({
             status: 'ok',

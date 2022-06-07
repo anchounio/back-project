@@ -1,27 +1,27 @@
 const getConnection = require('../getConnection');
 
 const insertExercise = async (
-  name,
-  description,
-  tipology,
-  muscularGroup,
-  photo = ''
+    name,
+    description,
+    typology,
+    muscularGroup,
+    photo = ''
 ) => {
-  let connection;
+    let connection;
 
-  try {
-    connection = await getConnection();
+    try {
+        connection = await getConnection();
 
-    await connection.query(
-      `
-                INSERT INTO exercises (name, description, tipology, muscularGroup, photo)
+        await connection.query(
+            `
+                INSERT INTO exercises (name, description, typology, muscularGroup, photo)
                 VALUES (?, ?, ?, ?, ?)
             `,
-      [name, description, tipology, muscularGroup, photo]
-    );
-  } finally {
-    if (connection) connection.release();
-  }
+            [name, description, typology, muscularGroup, photo]
+        );
+    } finally {
+        if (connection) connection.release();
+    }
 };
 
 module.exports = insertExercise;
