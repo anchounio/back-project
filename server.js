@@ -36,6 +36,7 @@ const {
     newExercise,
     deleteExercise,
     updateExercise,
+    listAllExercises,
 } = require('./controllers/exercises');
 
 // Crear un ejercicio.
@@ -46,6 +47,9 @@ app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
 
 // modificar un ejercicio
 app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
+
+// listar todos los ejercicios
+app.get('/exercise', authUser, listAllExercises);
 
 /**
  * #####################
