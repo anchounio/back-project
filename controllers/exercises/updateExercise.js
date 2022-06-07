@@ -5,18 +5,18 @@ const updateExercise = async (req, res, next) => {
         const {
             name,
             description,
-            photo,
             typology,
             muscularGroup,
+            photo,
             idExercise,
         } = req.params;
 
         await updateExerciseQuery(
             name,
             description,
-            photo,
             typology,
             muscularGroup,
+            photo,
             idExercise
         );
 

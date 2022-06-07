@@ -4,9 +4,9 @@ const updateExerciseQuery = async (
     idExercise,
     name,
     description,
-    photo,
     typology,
-    muscularGroup
+    muscularGroup,
+    photo = ''
 ) => {
     let connection;
 
@@ -15,9 +15,9 @@ const updateExerciseQuery = async (
 
         await connection.query(
             `UPDATE exercises 
-            SET name = ?, description = ?, photo = ?, typology = ?, muscularGroup = ?
+            SET name = ?, description = ?, typology = ?, muscularGroup = ?, photo = ?
             WHERE id = ?`,
-            [name, description, photo, typology, muscularGroup, idExercise]
+            [name, description, typology, muscularGroup, photo, idExercise]
         );
     } finally {
         if (connection) connection.release();
