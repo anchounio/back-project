@@ -24,11 +24,16 @@ const newExercise = async (req, res, next) => {
             );
         }
 
+        // req.files hace referencia a cualquier fichero que mandemos
+        // desde form-data. Aquí aparecerán por ejemplos las imágenes.
+        console.log(req.files);
+
         // Variable donde almacenaremos el nombre con el que guardaremos la imagen
         // en el disco.
-        let photoName;
+        let imgName;
 
-        // Si la imagen existe la guardamos.
+        // Si existe alguna imagen, la guardaremos en una carpeta de nuestra base de datos.
+
         if (req.files && req.files.photo) {
             // Creamos una ruta absoluta al directorio de descargas.
             const uploadsDir = path.join(__dirname, '..', '..', 'uploads');
@@ -36,7 +41,7 @@ const newExercise = async (req, res, next) => {
             // Creamos el directorio si no existe.
             await createPathIfNotExists(uploadsDir);
 
-            // Procesamos la imagen y la convertimos en un objeto de tipo "Sharp".
+            // Procesamos la imagen y la convertimos en un objeti de tipo "Sharp".
             const sharpImg = sharp(req.files.photo.data);
 
             // Redimensionamos la imagen para evitar que sean demasiado grandes.
@@ -44,17 +49,17 @@ const newExercise = async (req, res, next) => {
             sharpImg.resize(500);
 
             // Generamos un nombre único para la imagen.
-            photoName = `${nanoid(24)}.jpg`;
+            imgName = `${nanoid(24)}.jpg`;
 
             // Generamos la ruta absoluta a la imagen.
-            const imgPath = path.join(uploadsDir, photoName);
+            const imgPath = path.join(uploadsDir, imgName);
 
             // Guardamos la imagen en el directorio de descargas.
             await sharpImg.toFile(imgPath);
         }
 
         // Creamos un nuevo ejercicio en la base de datos.
-        insertExercise(name, description, typology, muscularGroup, photoName);
+        insertExercise(name, description, typology, muscularGroup, imgName);
 
         res.send({
             status: 'ok',
