@@ -4,12 +4,12 @@ const getExercise = async (req, res, next) => {
     try {
         const { idExercise } = req.params;
 
-        const tweet = await selectExerciseById(idExercise);
+        const exercise = await selectExerciseById(idExercise);
 
         res.send({
             status: 'ok',
             data: {
-                tweet,
+                exercise,
             },
         });
     } catch (err) {
