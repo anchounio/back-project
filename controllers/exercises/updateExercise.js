@@ -2,9 +2,23 @@ const updateExerciseQuery = require('../../db/exercisesQueries/updateExerciseQue
 
 const updateExercise = async (req, res, next) => {
     try {
-        const { idExercise } = req.params;
+        const {
+            name,
+            description,
+            photo,
+            typology,
+            muscularGroup,
+            idExercise,
+        } = req.params;
 
-        await updateExerciseQuery(idExercise);
+        await updateExerciseQuery(
+            name,
+            description,
+            photo,
+            typology,
+            muscularGroup,
+            idExercise
+        );
 
         res.send({
             status: 'ok',
