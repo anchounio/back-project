@@ -38,7 +38,7 @@ const { newExercise, deleteExercise } = require('./controllers/exercises');
 app.post('/exercise', authUser, isAdmin, newExercise);
 
 // borrar un ejercicio
-app.delete('/exercise', authUser, isAdmin, deleteExercise);
+app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
 
 /**
  * #####################
