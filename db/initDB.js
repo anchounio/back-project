@@ -30,7 +30,7 @@ async function main() {
             CREATE TABLE exercises (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 name VARCHAR(20) NOT NULL,
-                description VARCHAR(40) NOT NULL,
+                description VARCHAR(280) NOT NULL,
                 photo VARCHAR(250),
                 typology VARCHAR(40) NOT NULL,
                 muscularGroup VARCHAR(40) NOT NULL,
