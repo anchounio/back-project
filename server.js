@@ -49,7 +49,7 @@ app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
 app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
 
 // listar todos los ejercicios
-app.get('/exercise', authUser, listAllExercises);
+app.get('/exercises', authUser, listAllExercises);
 
 /**
  * #####################
