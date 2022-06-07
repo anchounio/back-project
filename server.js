@@ -32,13 +32,20 @@ const isAdmin = require('./middlewares/isAdmin');
  * #########################
  */
 
-const { newExercise, deleteExercise } = require('./controllers/exercises');
+const {
+    newExercise,
+    deleteExercise,
+    updateExercise,
+} = require('./controllers/exercises');
 
 // Crear un ejercicio.
 app.post('/exercise', authUser, isAdmin, newExercise);
 
 // borrar un ejercicio
 app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
+
+// modificar un ejercicio
+app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
 
 /**
  * #####################
