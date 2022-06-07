@@ -3,6 +3,7 @@ const listAllExercises = require('./listAllExercises');
 const newExercise = require('./newExercise');
 const updateExercise = require('./updateExercise');
 const getExercise = require('./getExercise');
+const likesExercise = require('./likesExercise');
 
 module.exports = {
     newExercise,
@@ -10,4 +11,5 @@ module.exports = {
     updateExercise,
     listAllExercises,
     getExercise,
+    likesExercise,
 };
