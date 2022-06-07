@@ -13,17 +13,18 @@ const updateExercise = async (req, res, next) => {
         const { name, description, typology, muscularGroup } = req.body;
 
         // PARA LA FOTO:
-        // Si existe alguna imagen, la guardaremos en una carpeta de nuestra base de datos.
 
         // Variable donde almacenaremos el nombre con el que guardaremos la imagen
         // en el disco.
         let imgName;
 
+        // Si existe alguna imagen, la guardaremos en una carpeta de nuestra base de datos.
         if (req.files && req.files.photo) {
             // Obtenemos la info del ejercicio.
             const exercise = await selectExerciseById(idExercise);
 
-            // Si el ejercicio tiene vinculada una imagen la eliminamos del disco.
+            // Llegados a este punto quiere decir que en el UPDATE hay una nueva imagen
+            // que se quiere subir. Por tanto borraremos la antigua imagen del disco duro.
             if (exercise.photo) {
                 await deletePhoto(exercise.photo);
             }
