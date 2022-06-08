@@ -1,4 +1,5 @@
 const likesExerciseQuery = require('../../db/exercisesQueries/likesExerciseQuery');
+const likesCounterQuery = require('../../db/exercisesQueries/likesCounterQuery');
 
 //const { generateError } = require('../../helpers');
 
@@ -12,9 +13,12 @@ const likesExercise = async (req, res, next) => {
 
         await likesExerciseQuery(idExercise, idUser);
 
+        const counter = await likesCounterQuery(idExercise);
+        console.log(counter);
+
         res.send({
             status: 'ok',
-            message: 'Ejercicio modificado',
+            message: `Se ha pulsado el botón de LIKE de este ejercicio. Ahora tiene ${counter} likes`,
         });
     } catch (err) {
         next(err);
