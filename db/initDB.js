@@ -45,7 +45,8 @@ async function main() {
                 FOREIGN KEY (idUser) REFERENCES users(id),
                 idExercise INT NOT NULL,
                 FOREIGN KEY (idExercise) REFERENCES exercises(id),
-                likes BOOLEAN DEFAULT true,
+                likes BOOLEAN DEFAULT false,
+                favourite BOOLEAN DEFAULT false,
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
