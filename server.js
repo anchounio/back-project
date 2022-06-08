@@ -45,13 +45,13 @@ const {
 // Crear un ejercicio.
 app.post('/exercise', authUser, isAdmin, newExercise);
 
-// borrar un ejercicio
+// Borrar un ejercicio
 app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
 
-// modificar un ejercicio
+// Modificar un ejercicio
 app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
 
-// listar todos los ejercicios
+// Listar todos los ejercicios
 app.get('/exercises', authUser, listAllExercises);
 
 // listar detalles de un ejercicio concreto

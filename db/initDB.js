@@ -41,13 +41,12 @@ async function main() {
         await connection.query(`
             CREATE TABLE exercisesUsers (
                 id INT PRIMARY KEY AUTO_INCREMENT,
-                idUsers INT NOT NULL,
-                FOREIGN KEY (idUsers) REFERENCES users(id),
-                idExercises INT NOT NULL,
-                FOREIGN KEY (idExercises) REFERENCES exercises(id),
-                likes INT,
+                idUser INT NOT NULL,
+                FOREIGN KEY (idUser) REFERENCES users(id),
+                idExercise INT NOT NULL,
+                FOREIGN KEY (idExercise) REFERENCES exercises(id),
+                likes BOOLEAN DEFAULT true,
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP
-
             )
         `);
 
