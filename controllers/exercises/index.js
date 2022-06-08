@@ -5,6 +5,7 @@ const updateExercise = require('./updateExercise');
 const getExercise = require('./getExercise');
 const getExerciseByTypology = require('./getExerciseByTypology');
 const getExerciseByMuscularGroup = require('./getExerciseByMuscularGroup');
+const likesExercise = require('./likesExercise');
 
 module.exports = {
     newExercise,
@@ -14,4 +15,5 @@ module.exports = {
     getExercise,
     getExerciseByTypology,
     getExerciseByMuscularGroup,
+    likesExercise,
 };
