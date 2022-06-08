@@ -15,10 +15,6 @@ const likesCounterQuery = async (idExercise) => {
             [idExercise]
         );
 
-        if (exercises.length < 1) {
-            throw generateError('Ejercicio no encontrado', 404);
-        }
-
         return exercises[0].LIKES;
     } finally {
         if (connection) connection.release();

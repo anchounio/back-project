@@ -41,6 +41,8 @@ const {
     getExerciseByTypology,
     getExerciseByMuscularGroup,
     likesExercise,
+    addFavourite,
+    getFavouriteExercises,
 } = require('./controllers/exercises');
 
 // Crear un ejercicio.
@@ -70,6 +72,12 @@ app.get(
 
 // Dar/Quitar like a un ejercicio
 app.put('/exercise/:idExercise/likes', authUser, likesExercise);
+
+// Añadir/Quitar ejercicio favorito.
+app.put('/exercise/:idExercise/favourite', authUser, addFavourite);
+
+// Listar ejercicios favoritos del usuario logueado.
+app.get('/exercises/favourite', authUser, getFavouriteExercises);
 
 /**
  * #####################
