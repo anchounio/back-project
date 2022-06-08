@@ -10,7 +10,7 @@ const likesCounterQuery = async (idExercise) => {
 
         const [exercises] = await connection.query(
             `
-            SELECT likes from exercisesUsers WHERE idExercise = ?
+            SELECT COUNT(likes) as LIKES from exercisesUsers WHERE idExercise = ? and likes = true
             `,
             [idExercise]
         );
@@ -19,7 +19,7 @@ const likesCounterQuery = async (idExercise) => {
             throw generateError('Ejercicio no encontrado', 404);
         }
 
-        return exercises[0].likes;
+        return exercises[0].LIKES;
     } finally {
         if (connection) connection.release();
     }
