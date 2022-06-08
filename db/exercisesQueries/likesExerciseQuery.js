@@ -14,17 +14,17 @@ const likesExerciseQuery = async (idExercise, idUser) => {
             [idUser, idExercise]
         );
         console.log(check);
-        // Si no existe esa tabla se crea
+        // Si no existe esa fila se crea
         if (check.length === 0) {
             await connection.query(
                 `
-                    INSERT INTO exercisesUsers (idExercise, idUser, likes)
+                    INSERT INTO exercisesUsers (idUser, idExercise, likes)
                     VALUES (?, ?, true)
                 `,
                 [idUser, idExercise]
             );
         } else {
-            // Si existe se cambia de true a false y viceversa
+            // Si la fila ya existía se cambia de true a false y viceversa
             console.log('existo!');
             await connection.query(
                 `
