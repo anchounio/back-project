@@ -59,10 +59,14 @@ app.get('/exercises', authUser, listAllExercises);
 app.get('/exercise/:idExercise/details', authUser, getExercise);
 
 // Listar ejercicios por la categoría "tipología"
-app.get('/exercises/:typology', authUser, getExerciseByTypology);
+app.get('/exercises/typology/:typology', authUser, getExerciseByTypology);
 
 // Listar ejercicios por la categoría "grupo muscular"
-app.get('/exercises/:muscularGroup', authUser, getExerciseByMuscularGroup);
+app.get(
+    '/exercises/muscularGroup/:muscularGroup',
+    authUser,
+    getExerciseByMuscularGroup
+);
 
 // Dar/Quitar like a un ejercicio
 app.put('/exercise/:idExercise/likes', authUser, likesExercise);
