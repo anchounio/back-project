@@ -70,14 +70,14 @@ app.get(
     getExerciseByMuscularGroup
 );
 
+// Listar ejercicios favoritos del usuario logueado.
+app.get('/exercises/favourite', authUser, getFavouriteExercises);
+
 // Dar/Quitar like a un ejercicio
 app.put('/exercise/:idExercise/likes', authUser, likesExercise);
 
 // Añadir/Quitar ejercicio favorito.
 app.put('/exercise/:idExercise/favourite', authUser, addFavourite);
-
-// Listar ejercicios favoritos del usuario logueado.
-app.get('/exercises/favourite', authUser, getFavouriteExercises);
 
 /**
  * #####################

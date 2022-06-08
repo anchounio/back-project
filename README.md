@@ -27,11 +27,12 @@ Se trata de una API que permita publicar ejercicios para la gestión de los mism
     -   muscularGroup
     -   createdAt
 
--   [exercisesUsers] - Tabla de relación m/n de las 2 anteriores. Se utiliza como contador de likes que los usuarios den a los ejercicios.
+-   [exercisesUsers] - Tabla de relación m/n de las 2 anteriores. Se utiliza como contador de likes que los usuarios den a los ejercicios y tambien guarda los ejercicios marcados como favoritos por cada usuario.
     -   id
     -   idUsers
     -   idExercises
     -   likes
+    -   favourite
     -   createdAt
 
 # Endpoints users
@@ -52,6 +53,12 @@ Se trata de una API que permita publicar ejercicios para la gestión de los mism
 
 -   GET - [/exercise/:idExercise/details] - Ver detalles de un ejercicio. **CON TOKEN**
 
--   PUT - [/exercise/:idExercise/like] - Dar o quitar like **CON TOKEN**
+-   GET - [/exercises/typology/:typology] - Filtrar por la categoria typology **CON TOKEN**
 
--   GET - [/exercises/category] - Filtrar por categoria **CON TOKEN**
+-   GET - [/exercises/muscularGroup/:muscularGroup] - Filtrar por la categoria muscularGroup **CON TOKEN**
+
+-   GET - [/exercises/favourite] - Ver listado de los ejercicios agregados a favoritos del usuario logueado **CON TOKEN**
+
+-   PUT - [/exercise/:idExercise/likes] - Dar o quitar like a un ejercicio **CON TOKEN**
+
+-   PUT - [/exercise/:idExercise/favourite] - Asignar o eliminar un ejercicio a favoritos **CON TOKEN**
