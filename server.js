@@ -38,6 +38,8 @@ const {
     updateExercise,
     listAllExercises,
     getExercise,
+    getExerciseByTypology,
+    getExerciseByMuscularGroup,
 } = require('./controllers/exercises');
 
 // Crear un ejercicio.
@@ -52,7 +54,14 @@ app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
 // listar todos los ejercicios
 app.get('/exercises', authUser, listAllExercises);
 
+// listar detalles de un ejercicio concreto
 app.get('/exercise/:idExercise/details', authUser, getExercise);
+
+// listar ejercicios por la categoría "tipología"
+app.get('/exercises/:typology', authUser, getExerciseByTypology);
+
+// listar ejercicios por la categoría "grupo muscular"
+app.get('/exercises/:muscularGroup', authUser, getExerciseByMuscularGroup);
 
 /**
  * #####################

@@ -2,7 +2,7 @@ const getConnection = require('../getConnection');
 
 const { generateError } = require('../../helpers');
 
-const selectAllExercisesQuery = async () => {
+const selectExerciseByTypologyQuery = async (typology) => {
     let connection;
 
     try {
@@ -10,9 +10,11 @@ const selectAllExercisesQuery = async () => {
 
         const [exercises] = await connection.query(
             `
-            SELECT id, name, photo, typology, muscularGroup 
-            FROM exercises
-            `
+            SELECT name, photo, typology, muscularGroup 
+            FROM exercises 
+            WHERE typology = ?
+            `,
+            [typology]
         );
 
         if (exercises.length < 1) {
@@ -25,4 +27,4 @@ const selectAllExercisesQuery = async () => {
     }
 };
 
-module.exports = selectAllExercisesQuery;
+module.exports = selectExerciseByTypologyQuery;
