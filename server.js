@@ -13,7 +13,7 @@ const app = express();
 app.use(morgan('dev'));
 
 // Logger cors.
-app.use(cors);
+app.use(cors());
 
 // Deserializamos un body con formato "raw".
 app.use(express.json());
@@ -59,7 +59,7 @@ app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
 app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
 
 // Listar todos los ejercicios
-app.get('/exercises', authUser, listAllExercises);
+app.get('/exercises', listAllExercises);
 
 // Listar detalles de un ejercicio concreto
 app.get('/exercise/:idExercise/details', authUser, getExercise);
