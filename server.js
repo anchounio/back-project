@@ -5,11 +5,15 @@ const { PORT } = process.env;
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 
 // Logger morgan.
 app.use(morgan('dev'));
+
+// Logger cors.
+app.use(cors);
 
 // Deserializamos un body con formato "raw".
 app.use(express.json());
