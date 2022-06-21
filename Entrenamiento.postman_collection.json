@@ -37,48 +37,241 @@
 		{
 			"name": "Add user",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"toni\", \r\n    \"email\": \"toni@tdoni.dcom\",\r\n    \"password\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Add Exercise",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"correr\",\r\n   \"description\": \"correr hasta morir\",\r\n   \"typology\": \"cardio\",\r\n   \"muscularGroup\": \"todos\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/exercise",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercise"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Add Exercise with photo",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "levantar mancuernas",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "arriba y abajo",
+							"type": "text"
+						},
+						{
+							"key": "typology",
+							"value": "torsion",
+							"type": "text"
+						},
+						{
+							"key": "muscularGroup",
+							"value": "biceps",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/C:/Users/metal/Desktop/srally3.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/exercise",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercise"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Delete Exercise",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/exercise/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercise",
+						"11"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Update Exercise",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"levantar cosas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/exercise/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercise",
+						"7"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Update Exercise with photo",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "esta",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "typology",
+							"type": "text"
+						},
+						{
+							"key": "typology",
+							"value": "una",
+							"type": "text"
+						},
+						{
+							"key": "muscularGroup",
+							"value": "brazo",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/exercise/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercise",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -86,7 +279,24 @@
 			"name": "Get All Exercises",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/exercises",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercises"
+					]
+				}
 			},
 			"response": []
 		},
@@ -94,7 +304,26 @@
 			"name": "Get Exercise",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/exercise/12/details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercise",
+						"12",
+						"details"
+					]
+				}
 			},
 			"response": []
 		},
@@ -102,7 +331,26 @@
 			"name": "Filter by MuscularGroup",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/exercises/muscularGroup/biceps",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercises",
+						"muscularGroup",
+						"biceps"
+					]
+				}
 			},
 			"response": []
 		},
@@ -110,23 +358,80 @@
 			"name": "Filter By Typology",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/exercises/typology/cardio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercises",
+						"typology",
+						"cardio"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Like Exercise",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY1NDY4Nzc1NCwiZXhwIjoxNjU3Mjc5NzU0fQ.eBLP_-v81-X4lBZGyQq1IjeDmbzWSXt4csysl5-SllE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/exercise/3/likes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercise",
+						"3",
+						"likes"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Add Favourite",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/exercise/1/favourite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercise",
+						"1",
+						"favourite"
+					]
+				}
 			},
 			"response": []
 		},
@@ -134,7 +439,25 @@
 			"name": "Get Favourite Exercises",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/exercises/favourite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"exercises",
+						"favourite"
+					]
+				}
 			},
 			"response": []
 		}
