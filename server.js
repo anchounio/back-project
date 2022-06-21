@@ -59,7 +59,7 @@ app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
 app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
 
 // Listar todos los ejercicios.
-app.get('/exercises', listAllExercises);
+app.get('/exercises', authUser, listAllExercises);
 
 // Listar detalles de un ejercicio concreto.
 app.get('/exercise/:idExercise/details', authUser, getExercise);
