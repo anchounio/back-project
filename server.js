@@ -75,7 +75,7 @@ app.get(
 );
 
 // Listar ejercicios favoritos del usuario logueado.
-app.get('/exercises/favourite', authUser, getFavouriteExercises);
+app.get('/exercises/:idUser/favourites', authUser, getFavouriteExercises);
 
 // Dar/Quitar like a un ejercicio.
 app.put('/exercises/:idExercise/likes', authUser, likesExercise);
