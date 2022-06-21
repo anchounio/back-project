@@ -50,19 +50,19 @@ const {
 } = require('./controllers/exercises');
 
 // Crear un ejercicio.
-app.post('/exercise', authUser, isAdmin, newExercise);
+app.post('/exercises', authUser, isAdmin, newExercise);
 
 // Borrar un ejercicio.
-app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
+app.delete('/exercises/:idExercise', authUser, isAdmin, deleteExercise);
 
 // Modificar un ejercicio.
-app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
+app.put('/exercises/:idExercise', authUser, isAdmin, updateExercise);
 
 // Listar todos los ejercicios.
 app.get('/exercises', authUser, listAllExercises);
 
 // Listar detalles de un ejercicio concreto.
-app.get('/exercise/:idExercise/details', authUser, getExercise);
+app.get('/exercises/:idExercise', authUser, getExercise);
 
 // Listar ejercicios por la categoría "tipología".
 app.get('/exercises/typology/:typology', authUser, getExerciseByTypology);
@@ -78,10 +78,10 @@ app.get(
 app.get('/exercises/favourite', authUser, getFavouriteExercises);
 
 // Dar/Quitar like a un ejercicio.
-app.put('/exercise/:idExercise/likes', authUser, likesExercise);
+app.put('/exercises/:idExercise/likes', authUser, likesExercise);
 
 // Añadir/Quitar ejercicio favorito.
-app.put('/exercise/:idExercise/favourite', authUser, addFavourite);
+app.put('/exercises/:idExercise/favourite', authUser, addFavourite);
 
 /**
  * #####################

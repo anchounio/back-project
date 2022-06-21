@@ -83,14 +83,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/exercise",
+					"raw": "http://localhost:4000/exercises",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercise"
+						"exercises"
 					]
 				}
 			},
@@ -138,14 +138,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:4000/exercise",
+					"raw": "http://localhost:4000/exercises",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercise"
+						"exercises"
 					]
 				}
 			},
@@ -163,14 +163,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:4000/exercise/11",
+					"raw": "http://localhost:4000/exercises/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercise",
+						"exercises",
 						"11"
 					]
 				}
@@ -198,14 +198,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/exercise/7",
+					"raw": "http://localhost:4000/exercises/7",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercise",
+						"exercises",
 						"7"
 					]
 				}
@@ -254,14 +254,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:4000/exercise/2",
+					"raw": "http://localhost:4000/exercises/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercise",
+						"exercises",
 						"2"
 					],
 					"query": [
@@ -312,16 +312,15 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:4000/exercise/12/details",
+					"raw": "http://localhost:4000/exercises/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercise",
-						"12",
-						"details"
+						"exercises",
+						"1"
 					]
 				}
 			},
@@ -393,14 +392,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:4000/exercise/3/likes",
+					"raw": "http://localhost:4000/exercises/3/likes",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercise",
+						"exercises",
 						"3",
 						"likes"
 					]
@@ -420,14 +419,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:4000/exercise/1/favourite",
+					"raw": "http://localhost:4000/exercises/1/favourite",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercise",
+						"exercises",
 						"1",
 						"favourite"
 					]
