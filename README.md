@@ -57,7 +57,7 @@ Se trata de una API que permita publicar ejercicios para la gestión de los mism
 
 -   GET - [/exercises/muscularGroup/:muscularGroup] - Filtrar por la categoria muscularGroup **CON TOKEN**
 
--   GET - [/exercises/favourite] - Ver listado de los ejercicios agregados a favoritos del usuario logueado **CON TOKEN**
+-   GET - [/exercises/:idUser/favourites] - Ver listado de los ejercicios agregados a favoritos del usuario logueado **CON TOKEN**
 
 -   PUT - [/exercises/:idExercise/likes] - Dar o quitar like a un ejercicio **CON TOKEN**
 
