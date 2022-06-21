@@ -43,15 +43,15 @@ Se trata de una API que permita publicar ejercicios para la gestión de los mism
 
 # Endpoints exercises
 
--   POST - [/exercise] - Registrar un nuevo ejercicio. **CON TOKEN - ADMIN** ✅
+-   POST - [/exercises] - Registrar un nuevo ejercicio. **CON TOKEN - ADMIN** ✅
 
--   PUT - [/exercise/:idExercise] - Modificar un ejercicio. **CON TOKEN - ADMIN** ✅
+-   PUT - [/exercises/:idExercise] - Modificar un ejercicio. **CON TOKEN - ADMIN** ✅
 
--   DELETE - [/exercise/:idExercise] - Eliminar un ejercicio. **CON TOKEN - ADMIN** ✅
+-   DELETE - [/exercises/:idExercise] - Eliminar un ejercicio. **CON TOKEN - ADMIN** ✅
 
 -   GET - [/exercises] - Ver listado de los ejercicios. **CON TOKEN**
 
--   GET - [/exercise/:idExercise/details] - Ver detalles de un ejercicio. **CON TOKEN**
+-   GET - [/exercises/:idExercise] - Ver detalles de un ejercicio. **CON TOKEN**
 
 -   GET - [/exercises/typology/:typology] - Filtrar por la categoria typology **CON TOKEN**
 
@@ -59,6 +59,6 @@ Se trata de una API que permita publicar ejercicios para la gestión de los mism
 
 -   GET - [/exercises/favourite] - Ver listado de los ejercicios agregados a favoritos del usuario logueado **CON TOKEN**
 
--   PUT - [/exercise/:idExercise/likes] - Dar o quitar like a un ejercicio **CON TOKEN**
+-   PUT - [/exercises/:idExercise/likes] - Dar o quitar like a un ejercicio **CON TOKEN**
 
--   PUT - [/exercise/:idExercise/favourite] - Asignar o eliminar un ejercicio a favoritos **CON TOKEN**
+-   PUT - [/exercises/:idExercise/favourite] - Asignar o eliminar un ejercicio a favoritos **CON TOKEN**
