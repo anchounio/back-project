@@ -52,22 +52,22 @@ const {
 // Crear un ejercicio.
 app.post('/exercise', authUser, isAdmin, newExercise);
 
-// Borrar un ejercicio
+// Borrar un ejercicio.
 app.delete('/exercise/:idExercise', authUser, isAdmin, deleteExercise);
 
-// Modificar un ejercicio
+// Modificar un ejercicio.
 app.put('/exercise/:idExercise', authUser, isAdmin, updateExercise);
 
-// Listar todos los ejercicios
+// Listar todos los ejercicios.
 app.get('/exercises', listAllExercises);
 
-// Listar detalles de un ejercicio concreto
+// Listar detalles de un ejercicio concreto.
 app.get('/exercise/:idExercise/details', authUser, getExercise);
 
-// Listar ejercicios por la categoría "tipología"
+// Listar ejercicios por la categoría "tipología".
 app.get('/exercises/typology/:typology', authUser, getExerciseByTypology);
 
-// Listar ejercicios por la categoría "grupo muscular"
+// Listar ejercicios por la categoría "grupo muscular".
 app.get(
     '/exercises/muscularGroup/:muscularGroup',
     authUser,
@@ -77,7 +77,7 @@ app.get(
 // Listar ejercicios favoritos del usuario logueado.
 app.get('/exercises/favourite', authUser, getFavouriteExercises);
 
-// Dar/Quitar like a un ejercicio
+// Dar/Quitar like a un ejercicio.
 app.put('/exercise/:idExercise/likes', authUser, likesExercise);
 
 // Añadir/Quitar ejercicio favorito.
@@ -91,10 +91,10 @@ app.put('/exercise/:idExercise/favourite', authUser, addFavourite);
 
 const { newUser, loginUser } = require('./controllers/users');
 
-// registrar un usuario
+// Registrar un usuario.
 app.post('/users', newUser);
 
-// logueo de usuarios
+// Logueo de usuarios.
 app.post('/login', loginUser);
 
 /**

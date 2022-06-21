@@ -26,7 +26,6 @@ const likesExerciseQuery = async (idExercise, idUser) => {
             `,
             [idUser, idExercise]
         );
-        console.log(check);
         // Si no existe esa fila se crea
         if (check.length === 0) {
             await connection.query(
@@ -38,7 +37,6 @@ const likesExerciseQuery = async (idExercise, idUser) => {
             );
         } else {
             // Si la fila ya existía se cambia de true a false y viceversa
-            console.log('existo!');
             await connection.query(
                 `
                     UPDATE exercisesUsers SET likes = NOT likes WHERE idUser = ? and idExercise = ?

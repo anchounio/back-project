@@ -3,7 +3,6 @@ const selectExerciseByMuscularGroupQuery = require('../../db/exercisesQueries/se
 const getExerciseByMuscularGroup = async (req, res, next) => {
     try {
         const { muscularGroup } = req.params;
-        console.log(muscularGroup);
         const exercise = await selectExerciseByMuscularGroupQuery(
             muscularGroup
         );
