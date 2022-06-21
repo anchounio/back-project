@@ -45,9 +45,9 @@ Se trata de una API que permita publicar ejercicios para la gestión de los mism
 
 -   POST - [/exercise] - Registrar un nuevo ejercicio. **CON TOKEN - ADMIN** ✅
 
--   PUT - [/exercise] - Modificar un ejercicio. **CON TOKEN - ADMIN** ✅
+-   PUT - [/exercise/:idExercise] - Modificar un ejercicio. **CON TOKEN - ADMIN** ✅
 
--   DELETE - [/exercise] - Eliminar un ejercicio. **CON TOKEN - ADMIN** ✅
+-   DELETE - [/exercise/:idExercise] - Eliminar un ejercicio. **CON TOKEN - ADMIN** ✅
 
 -   GET - [/exercises] - Ver listado de los ejercicios. **CON TOKEN**
 

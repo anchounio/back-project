@@ -26,7 +26,6 @@ const newExercise = async (req, res, next) => {
 
         // req.files hace referencia a cualquier fichero que mandemos
         // desde form-data. Aquí aparecerán por ejemplo las imágenes.
-        console.log(req.files);
 
         // Variable donde almacenaremos el nombre con el que guardaremos la imagen
         // en el disco.

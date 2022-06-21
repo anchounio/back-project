@@ -43,7 +43,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
                 `,
                 [idUser, idExercise]
             );
-            console.log(check[0].favourite);
+
             return check[0].favourite;
         } else {
             // Si la fila ya existía se cambia de true a false y viceversa
@@ -61,7 +61,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
                 `,
                 [idUser, idExercise]
             );
-            console.log(check2[0].favourite);
+
             return check2[0].favourite;
         }
     } finally {

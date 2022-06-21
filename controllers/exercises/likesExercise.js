@@ -14,7 +14,6 @@ const likesExercise = async (req, res, next) => {
         await likesExerciseQuery(idExercise, idUser);
 
         const counter = await likesCounterQuery(idExercise);
-        console.log(counter);
 
         res.send({
             status: 'ok',
