@@ -4,6 +4,8 @@ const { generateError } = require('../../helpers');
 
 const likesExerciseQuery = async (idExercise, idUser) => {
     let connection;
+    console.log(idExercise);
+    console.log(idUser);
 
     try {
         connection = await getConnection();
@@ -20,9 +22,9 @@ const likesExerciseQuery = async (idExercise, idUser) => {
         }
 
         // Comprobamos si existe esta fila en la tabla
-        const [check] = await connection.query(
+        let [check] = await connection.query(
             `
-                SELECT likes from exercisesUsers WHERE idUser = ? and idExercise = ?                
+                SELECT vote from likes WHERE idUser = ? and idExercise = ?                
             `,
             [idUser, idExercise]
         );
@@ -30,7 +32,7 @@ const likesExerciseQuery = async (idExercise, idUser) => {
         if (check.length === 0) {
             await connection.query(
                 `
-                    INSERT INTO exercisesUsers (idUser, idExercise, likes)
+                    INSERT INTO likes (idUser, idExercise, vote)
                     VALUES (?, ?, true)
                 `,
                 [idUser, idExercise]
@@ -39,7 +41,7 @@ const likesExerciseQuery = async (idExercise, idUser) => {
             // Si la fila ya existía se cambia de true a false y viceversa
             await connection.query(
                 `
-                    UPDATE exercisesUsers SET likes = NOT likes WHERE idUser = ? and idExercise = ?
+                    UPDATE likes SET vote = NOT vote WHERE idUser = ? and idExercise = ?
                 `,
                 [idUser, idExercise]
             );

@@ -6,7 +6,8 @@ const likesCounterQuery = require('../../db/exercisesQueries/likesCounterQuery')
 const likesExercise = async (req, res, next) => {
     try {
         // Tomamos la id del ejercicio
-        const { idExercise } = req.params;
+        let { idExercise } = req.params;
+        idExercise = Number(idExercise);
 
         // Tomamos la id del usuario
         const idUser = req.user.id;

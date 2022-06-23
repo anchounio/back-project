@@ -22,7 +22,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
         // Comprobamos si existe esta fila en la tabla
         let [check] = await connection.query(
             `
-                SELECT favourite from exercisesUsers WHERE idUser = ? and idExercise = ?                
+                SELECT favourite from favourites WHERE idUser = ? and idExercise = ?                
             `,
             [idUser, idExercise]
         );
@@ -31,7 +31,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
         if (check.length === 0) {
             await connection.query(
                 `
-                    INSERT INTO exercisesUsers (idUser, idExercise, favourite)
+                    INSERT INTO favourites (idUser, idExercise, favourite)
                     VALUES (?, ?, true)
                 `,
                 [idUser, idExercise]
@@ -39,7 +39,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
             // Se selecciona y se devuelve el valor de favorito
             [check] = await connection.query(
                 `
-                    SELECT favourite from exercisesUsers WHERE idUser = ? and idExercise = ?                
+                    SELECT favourite from favourites WHERE idUser = ? and idExercise = ?                
                 `,
                 [idUser, idExercise]
             );
@@ -49,7 +49,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
             // Si la fila ya existía se cambia de true a false y viceversa
             await connection.query(
                 `
-                    UPDATE exercisesUsers SET favourite = NOT favourite WHERE idUser = ? and idExercise = ?
+                    UPDATE favourites SET favourite = NOT favourite WHERE idUser = ? and idExercise = ?
                 `,
                 [idUser, idExercise]
             );
@@ -57,7 +57,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
             // Se comprueba ahora el estado en el que está (0 o 1)
             const [check2] = await connection.query(
                 `
-                    SELECT favourite from exercisesUsers WHERE idUser = ? and idExercise = ?                
+                    SELECT favourite from favourites WHERE idUser = ? and idExercise = ?                
                 `,
                 [idUser, idExercise]
             );
