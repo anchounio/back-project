@@ -42,8 +42,8 @@ const {
     updateExercise,
     listAllExercises,
     getExercise,
-    getExerciseByTypology,
-    getExerciseByMuscularGroup,
+    // getExerciseByTypology,
+    // getExerciseByMuscularGroup,
     likesExercise,
     addFavourite,
     getFavouriteExercises,
@@ -65,14 +65,14 @@ app.get('/exercises', authUser, listAllExercises);
 app.get('/exercises/:idExercise', authUser, getExercise);
 
 // Listar ejercicios por la categoría "tipología".
-app.get('/exercises/typology/:typology', authUser, getExerciseByTypology);
+// app.get('/exercises/typology/:typology', authUser, getExerciseByTypology);
 
 // Listar ejercicios por la categoría "grupo muscular".
-app.get(
-    '/exercises/muscularGroup/:muscularGroup',
-    authUser,
-    getExerciseByMuscularGroup
-);
+// app.get(
+//     '/exercises/muscularGroup/:muscularGroup',
+//     authUser,
+//     getExerciseByMuscularGroup
+// );
 
 // Listar ejercicios favoritos del usuario logueado.
 app.get('/exercises/:idUser/favourites', authUser, getFavouriteExercises);
