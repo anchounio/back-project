@@ -10,12 +10,12 @@ const likesCounterQuery = async (idExercise) => {
 
         const [exercises] = await connection.query(
             `
-            SELECT COUNT(likes) as LIKES from exercisesUsers WHERE idExercise = ? and likes = true
+            SELECT COUNT(vote) as VOTE from likes WHERE idExercise = ? and vote = true
             `,
             [idExercise]
         );
 
-        return exercises[0].LIKES;
+        return exercises[0].VOTE;
     } finally {
         if (connection) connection.release();
     }

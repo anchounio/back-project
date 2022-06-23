@@ -9,7 +9,8 @@ async function main() {
 
         console.log('Borrando las tablas existentes...');
 
-        await connection.query('DROP TABLE IF EXISTS exercisesUsers');
+        await connection.query('DROP TABLE IF EXISTS likes');
+        await connection.query('DROP TABLE IF EXISTS favourites');
         await connection.query('DROP TABLE IF EXISTS exercises');
         await connection.query('DROP TABLE IF EXISTS users');
 
@@ -39,13 +40,24 @@ async function main() {
         `);
 
         await connection.query(`
-            CREATE TABLE exercisesUsers (
+            CREATE TABLE likes (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 idUser INT NOT NULL,
                 FOREIGN KEY (idUser) REFERENCES users(id),
                 idExercise INT NOT NULL,
                 FOREIGN KEY (idExercise) REFERENCES exercises(id),
-                likes BOOLEAN DEFAULT false,
+                vote BOOLEAN DEFAULT false,                
+                createAt DATETIME DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
+        await connection.query(`
+            CREATE TABLE favourites (
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                idUser INT NOT NULL,
+                FOREIGN KEY (idUser) REFERENCES users(id),
+                idExercise INT NOT NULL,
+                FOREIGN KEY (idExercise) REFERENCES exercises(id),
                 favourite BOOLEAN DEFAULT false,
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )

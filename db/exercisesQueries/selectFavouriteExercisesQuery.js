@@ -11,8 +11,8 @@ const selectFavouriteExercises = async (idUser) => {
         const [exercises] = await connection.query(
             `
             SELECT E.id, E.name, E.description, E.typology, E.muscularGroup, E.photo from exercises E
-            INNER JOIN exercisesusers EU ON E.id = EU.idExercise
-            INNER JOIN users U ON U.id = EU.idUser
+            INNER JOIN favourites F ON E.id = F.idExercise
+            INNER JOIN users U ON U.id = F.idUser
             WHERE idUser = ? and favourite = 1 ;
             `,
             [idUser]
