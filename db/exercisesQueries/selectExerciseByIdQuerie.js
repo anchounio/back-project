@@ -10,7 +10,11 @@ const selectExerciseById = async (idExercise) => {
 
         const [exercises] = await connection.query(
             `
-            SELECT * from exercises WHERE id = ?
+            SELECT e.id, e.name, e.photo, e.description, e.typology, e.muscularGroup, e.createAt, SUM(IFNULL(l.vote = 1, 0)) as likes
+            FROM exercises e
+            LEFT JOIN likes l
+            ON e.id = l.idExercise
+            WHERE e.id = ?
             `,
             [idExercise]
         );
