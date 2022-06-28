@@ -33,10 +33,13 @@ const loginUser = async (req, res, next) => {
             expiresIn: '30d',
         });
 
+        const role = user.role;
+
         res.send({
             status: 'ok',
             data: {
                 token,
+                role,
             },
         });
     } catch (err) {
