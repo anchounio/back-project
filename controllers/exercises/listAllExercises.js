@@ -2,7 +2,10 @@ const selectAllExercisesQuery = require('../../db/exercisesQueries/selectAllExer
 
 const listAllExercises = async (req, res, next) => {
     try {
-        const exercises = await selectAllExercisesQuery();
+        const { typology } = req.query;
+        const { muscular } = req.query;
+
+        const exercises = await selectAllExercisesQuery(typology, muscular);
 
         res.send({
             status: 'ok',
