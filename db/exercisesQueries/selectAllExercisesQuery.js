@@ -10,18 +10,44 @@ const selectAllExercisesQuery = async (typology, muscular) => {
     try {
         connection = await getConnection();
 
-        if (typology || muscular) {
+        if (typology && muscular) {
             [exercises] = await connection.query(
                 `
                 SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes
                 FROM exercises e
                 LEFT JOIN likes l
                 ON e.id = l.idExercise
-                WHERE typology LIKE ? OR muscularGroup LIKE ?
+                WHERE typology = ? AND muscularGroup = ?
                 GROUP BY e.id
                 ORDER BY e.createAt
                 `,
-                [`%${typology}%`, `%${muscular}%`]
+                [typology, muscular]
+            );
+        } else if (!typology && muscular) {
+            [exercises] = await connection.query(
+                `
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes
+                    FROM exercises e
+                    LEFT JOIN likes l
+                    ON e.id = l.idExercise
+                    WHERE muscularGroup = ?
+                    GROUP BY e.id
+                    ORDER BY e.createAt
+                    `,
+                [muscular]
+            );
+        } else if (typology && !muscular) {
+            [exercises] = await connection.query(
+                `
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes
+                FROM exercises e
+                LEFT JOIN likes l
+                ON e.id = l.idExercise
+                WHERE typology = ?
+                GROUP BY e.id
+                ORDER BY e.createAt
+                `,
+                [typology]
             );
         } else {
             [exercises] = await connection.query(
