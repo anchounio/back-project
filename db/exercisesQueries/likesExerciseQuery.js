@@ -28,12 +28,24 @@ const likesExerciseQuery = async (idExercise, idUser) => {
             `,
             [idUser, idExercise]
         );
-        await connection.query(
-            `
-                UPDATE likes SET vote = ? WHERE idUser = ? and idExercise = ?
-            `,
-            [!check[0].vote, idUser, idExercise]
-        );
+        // Si no existe esa fila se crea
+        if (check.length === 0) {
+            await connection.query(
+                `
+                    INSERT INTO likes (idUser, idExercise, vote)
+                    VALUES (?, ?, true)
+                `,
+                [idUser, idExercise]
+            );
+        } else {
+            // Si la fila ya existía se cambia de true a false y viceversa
+            await connection.query(
+                `
+                    UPDATE likes SET vote = NOT vote WHERE idUser = ? and idExercise = ?
+                `,
+                [idUser, idExercise]
+            );
+        }
     } finally {
         if (connection) connection.release();
     }
