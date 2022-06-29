@@ -13,7 +13,7 @@ const selectAllExercisesQuery = async (typology, muscular) => {
         if (typology && muscular) {
             [exercises] = await connection.query(
                 `
-                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) AS likes, IFNULL(f.favourite = 1, 0) AS favourites
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) AS likes, SUM(IFNULL(f.favourite = 1, 0)) AS favourites
                 FROM exercises e
                 LEFT JOIN likes l
                 ON e.id = l.idExercise
@@ -28,7 +28,7 @@ const selectAllExercisesQuery = async (typology, muscular) => {
         } else if (!typology && muscular) {
             [exercises] = await connection.query(
                 `
-                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes, IFNULL(f.favourite = 1, 0) AS favourites
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) AS likes, SUM(IFNULL(f.favourite = 1, 0)) AS favourites
                 FROM exercises e
                 LEFT JOIN likes l
                 ON e.id = l.idExercise
@@ -43,7 +43,7 @@ const selectAllExercisesQuery = async (typology, muscular) => {
         } else if (typology && !muscular) {
             [exercises] = await connection.query(
                 `
-                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes, IFNULL(f.favourite = 1, 0) AS favourites
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) AS likes, SUM(IFNULL(f.favourite = 1, 0)) AS favourites
                 FROM exercises e
                 LEFT JOIN likes l
                 ON e.id = l.idExercise
@@ -58,7 +58,7 @@ const selectAllExercisesQuery = async (typology, muscular) => {
         } else {
             [exercises] = await connection.query(
                 `
-                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes, IFNULL(f.favourite = 1, 0) AS favourites
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) AS likes, SUM(IFNULL(f.favourite = 1, 0)) AS favourites
                 FROM exercises e
                 LEFT JOIN likes l
                 ON e.id = l.idExercise
