@@ -13,10 +13,12 @@ const selectAllExercisesQuery = async (typology, muscular) => {
         if (typology && muscular) {
             [exercises] = await connection.query(
                 `
-                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) AS likes, IFNULL(f.favourite = 1, 0) AS favourites
                 FROM exercises e
                 LEFT JOIN likes l
                 ON e.id = l.idExercise
+                LEFT JOIN favourites f
+                ON e.id = f.idExercise
                 WHERE typology = ? AND muscularGroup = ?
                 GROUP BY e.id
                 ORDER BY e.createAt
@@ -26,23 +28,27 @@ const selectAllExercisesQuery = async (typology, muscular) => {
         } else if (!typology && muscular) {
             [exercises] = await connection.query(
                 `
-                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes
-                    FROM exercises e
-                    LEFT JOIN likes l
-                    ON e.id = l.idExercise
-                    WHERE muscularGroup = ?
-                    GROUP BY e.id
-                    ORDER BY e.createAt
-                    `,
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes, IFNULL(f.favourite = 1, 0) AS favourites
+                FROM exercises e
+                LEFT JOIN likes l
+                ON e.id = l.idExercise
+                LEFT JOIN favourites f
+                ON e.id = f.idExercise
+                WHERE muscularGroup = ?
+                GROUP BY e.id
+                ORDER BY e.createAt
+                `,
                 [muscular]
             );
         } else if (typology && !muscular) {
             [exercises] = await connection.query(
                 `
-                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes, IFNULL(f.favourite = 1, 0) AS favourites
                 FROM exercises e
                 LEFT JOIN likes l
                 ON e.id = l.idExercise
+                LEFT JOIN favourites f
+                ON e.id = f.idExercise
                 WHERE typology = ?
                 GROUP BY e.id
                 ORDER BY e.createAt
@@ -52,10 +58,12 @@ const selectAllExercisesQuery = async (typology, muscular) => {
         } else {
             [exercises] = await connection.query(
                 `
-                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes
+                SELECT e.id, e.name, e.photo, e.typology, e.muscularGroup, SUM(IFNULL(l.vote = 1, 0)) as likes, IFNULL(f.favourite = 1, 0) AS favourites
                 FROM exercises e
                 LEFT JOIN likes l
                 ON e.id = l.idExercise
+                LEFT JOIN favourites f
+                ON e.id = f.idExercise
                 GROUP BY e.id
                 ORDER BY e.createAt
                 `
