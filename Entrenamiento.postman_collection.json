@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"admin@gym.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"raw": "{\r\n    \"name\": \"admin\",\r\n    \"password\": \"1234\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"toni\", \r\n    \"email\": \"toni@tdoni.dcom\",\r\n    \"password\": \"1\"\r\n}",
+					"raw": "{\r\n    \"name\": \"toni\", \r\n    \"email\": \"toni@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -75,7 +75,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"name\": \"correr\",\r\n   \"description\": \"correr hasta morir\",\r\n   \"typology\": \"cardio\",\r\n   \"muscularGroup\": \"todos\"\r\n}",
+					"raw": "{\r\n   \"name\": \"Curl Biceps\",\r\n   \"description\": \"Levantar la barra con los 2 brazos\",\r\n   \"typology\": \"anaerobico\",\r\n   \"muscularGroup\": \"brazos\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -112,28 +112,28 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "levantar mancuernas",
+							"value": "Curl Triceps",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "arriba y abajo",
+							"value": "Levantar una pesa directamente sobre la cabeza con el brazo bajado lentamente detrás de la cabeza, doblando el brazo por el codo.\n",
 							"type": "text"
 						},
 						{
 							"key": "typology",
-							"value": "torsion",
+							"value": "anaerobico",
 							"type": "text"
 						},
 						{
 							"key": "muscularGroup",
-							"value": "biceps",
+							"value": "brazos",
 							"type": "text"
 						},
 						{
 							"key": "photo",
 							"type": "file",
-							"src": "/C:/Users/metal/Desktop/srally3.png"
+							"src": "/C:/Users/metal/Desktop/curl-triceps.jpg"
 						}
 					]
 				},
@@ -163,7 +163,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:4000/exercises/11",
+					"raw": "http://localhost:4000/exercises/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -171,7 +171,7 @@
 					"port": "4000",
 					"path": [
 						"exercises",
-						"11"
+						"1"
 					]
 				}
 			},
@@ -190,7 +190,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"levantar cosas\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Curl Biceps\",\r\n    \"description\": \"Levantar la barra despacio con los 2 brazos girandola con los codos\",\r\n    \"typology\": \"anaerobico\",\r\n    \"muscularGroup\": \"brazos\"\r\n\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -198,7 +198,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/exercises/7",
+					"raw": "http://localhost:4000/exercises/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -206,7 +206,7 @@
 					"port": "4000",
 					"path": [
 						"exercises",
-						"7"
+						"1"
 					]
 				}
 			},
@@ -228,28 +228,28 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "esta",
+							"value": "Curl Triceps",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "typology",
+							"value": "Levantar una pesa directamente sobre la cabeza con el brazo bajado lentamente detrás de la cabeza, doblando el brazo por el codo. Después de bajar el peso detrás de la espalda, cerca del área del cuello, se eleva sobre la cabeza, con el brazo completamente extendido a la posición inicial.",
 							"type": "text"
 						},
 						{
 							"key": "typology",
-							"value": "una",
+							"value": "anaerobico",
 							"type": "text"
 						},
 						{
 							"key": "muscularGroup",
-							"value": "brazo",
+							"value": "brazos",
 							"type": "text"
 						},
 						{
 							"key": "photo",
 							"type": "file",
-							"src": []
+							"src": "/C:/Users/metal/Desktop/curl-triceps.jpg"
 						}
 					]
 				},
@@ -287,14 +287,15 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:4000/exercises",
+					"raw": "http://localhost:4000/exercises/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"exercises"
+						"exercises",
+						""
 					]
 				}
 			},
@@ -327,60 +328,6 @@
 			"response": []
 		},
 		{
-			"name": "Filter by MuscularGroup",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:4000/exercises/muscularGroup/biceps",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"exercises",
-						"muscularGroup",
-						"biceps"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Filter By Typology",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTg4NDQzLCJleHAiOjE2NTcxODA0NDN9.mmZ2XKILuSV8MqrJmoe_EjS3ocJEedoqFZfypZ-Di6c",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:4000/exercises/typology/cardio",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"exercises",
-						"typology",
-						"cardio"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Like Exercise",
 			"request": {
 				"method": "PUT",
@@ -392,7 +339,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:4000/exercises/3/likes",
+					"raw": "http://localhost:4000/exercises/1/likes",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -400,7 +347,7 @@
 					"port": "4000",
 					"path": [
 						"exercises",
-						"3",
+						"1",
 						"likes"
 					]
 				}

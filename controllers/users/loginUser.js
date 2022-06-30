@@ -1,18 +1,19 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const selectUserByEmailQuery = require('../../db/userQueries/selectUserByEmailQuery');
+//const selectUserByEmailQuery = require('../../db/userQueries/selectUserByEmailQuery');
+const selectUserByNameQuery = require('../../db/userQueries/selectUserByNameQuery');
 const { generateError } = require('../../helpers');
 
 const loginUser = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { name, password } = req.body;
 
-        if (!email || !password) {
+        if (!name || !password) {
             throw generateError('Faltan campos', 400);
         }
 
         // obtenemos el usuario con el mail del body
-        const user = await selectUserByEmailQuery(email);
+        const user = await selectUserByNameQuery(name);
 
         // comprobamos que las contraseñas coinciden
         const validPassword = await bcrypt.compare(password, user.password);
