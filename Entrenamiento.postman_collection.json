@@ -75,7 +75,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"name\": \"Curl Biceps\",\r\n   \"description\": \"Levantar la barra con los 2 brazos\",\r\n   \"typology\": \"anaerobico\",\r\n   \"muscularGroup\": \"brazos\"\r\n}",
+					"raw": "{\r\n   \"name\": \"Curl Biceps\",\r\n   \"description\": \"Levantar la barra con los 2 brazos.\",\r\n   \"typology\": \"anaerobico\",\r\n   \"muscularGroup\": \"brazos\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

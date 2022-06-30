@@ -26,7 +26,7 @@ const loginUser = async (req, res, next) => {
         // información que queremos guardar en el token
         const payload = {
             id: user.id,
-            // role: user.role,
+            role: user.role,
         };
 
         // firmamos el token
