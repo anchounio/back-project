@@ -4,7 +4,9 @@ const getExercise = async (req, res, next) => {
     try {
         const { idExercise } = req.params;
 
-        const exercise = await selectExerciseById(idExercise);
+        const idUser = req.user.id;
+
+        const exercise = await selectExerciseById(idUser, idExercise);
 
         res.send({
             status: 'ok',

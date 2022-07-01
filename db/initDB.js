@@ -43,10 +43,10 @@ async function main() {
             CREATE TABLE likes (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 idUser INT NOT NULL,
-                FOREIGN KEY (idUser) REFERENCES users(id),
+                FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
                 idExercise INT NOT NULL,
-                FOREIGN KEY (idExercise) REFERENCES exercises(id),
-                vote BOOLEAN DEFAULT false,                
+                FOREIGN KEY (idExercise) REFERENCES exercises(id) ON DELETE CASCADE,
+                vote BOOLEAN DEFAULT true,                
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
@@ -55,10 +55,10 @@ async function main() {
             CREATE TABLE favourites (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 idUser INT NOT NULL,
-                FOREIGN KEY (idUser) REFERENCES users(id),
+                FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
                 idExercise INT NOT NULL,
-                FOREIGN KEY (idExercise) REFERENCES exercises(id),
-                favourite BOOLEAN DEFAULT false,
+                FOREIGN KEY (idExercise) REFERENCES exercises(id) ON DELETE CASCADE,
+                favourite BOOLEAN DEFAULT true,
                 createAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);

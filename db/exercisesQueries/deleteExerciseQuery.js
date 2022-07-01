@@ -7,14 +7,14 @@ const deleteExerciseQuery = async (idExercise) => {
     try {
         connection = await getConnection();
 
-        const [exercises] = await connection.query(
-            `SELECT id FROM exercises WHERE id = ?`,
-            [idExercise]
-        );
+        // const [exercises] = await connection.query(
+        //     `SELECT id FROM exercises WHERE id = ?`,
+        //     [idExercise]
+        // );
 
-        if (exercises.length < 1) {
-            throw generateError('El ejercicio no existe', 404);
-        }
+        // if (exercises.length < 1) {
+        //     throw generateError('El ejercicio no existe', 404);
+        // }
 
         await connection.query(`DELETE FROM exercises WHERE id = ?`, [
             idExercise,

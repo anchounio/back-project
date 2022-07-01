@@ -29,14 +29,16 @@ const likesExerciseQuery = async (idExercise, idUser) => {
             [idUser, idExercise]
         );
         // Si no existe esa fila se crea
-        if (check.length === 0) {
+        if (check.length < 1) {
             await connection.query(
                 `
-                    INSERT INTO likes (idUser, idExercise, vote)
-                    VALUES (?, ?, true)
+                    INSERT INTO likes (idUser, idExercise)
+                    VALUES (?, ?)
                 `,
                 [idUser, idExercise]
             );
+
+            return true;
         } else {
             // Si la fila ya existía se cambia de true a false y viceversa
             await connection.query(
@@ -45,6 +47,8 @@ const likesExerciseQuery = async (idExercise, idUser) => {
                 `,
                 [idUser, idExercise]
             );
+
+            return check[0].votes;
         }
     } finally {
         if (connection) connection.release();
