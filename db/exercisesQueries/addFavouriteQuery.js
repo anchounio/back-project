@@ -28,23 +28,23 @@ const addFavouriteQuery = async (idExercise, idUser) => {
         );
 
         // Si no existe esa fila se crea
-        if (check.length === 0) {
+        if (check.length < 1) {
             await connection.query(
                 `
-                    INSERT INTO favourites (idUser, idExercise, favourite)
-                    VALUES (?, ?, true)
+                    INSERT INTO favourites (idUser, idExercise)
+                    VALUES (?, ?)
                 `,
                 [idUser, idExercise]
             );
             // Se selecciona y se devuelve el valor de favorito
-            [check] = await connection.query(
-                `
-                    SELECT favourite from favourites WHERE idUser = ? and idExercise = ?                
-                `,
-                [idUser, idExercise]
-            );
+            // [check] = await connection.query(
+            //     `
+            //         SELECT favourite from favourites WHERE idUser = ? and idExercise = ?
+            //     `,
+            //     [idUser, idExercise]
+            // );
 
-            return check[0].favourite;
+            return true;
         } else {
             // Si la fila ya existía se cambia de true a false y viceversa
             await connection.query(
@@ -54,15 +54,15 @@ const addFavouriteQuery = async (idExercise, idUser) => {
                 [idUser, idExercise]
             );
 
-            // Se comprueba ahora el estado en el que está (0 o 1)
-            const [check2] = await connection.query(
-                `
-                    SELECT favourite from favourites WHERE idUser = ? and idExercise = ?                
-                `,
-                [idUser, idExercise]
-            );
+            // // Se comprueba ahora el estado en el que está (0 o 1)
+            // const [check2] = await connection.query(
+            //     `
+            //         SELECT favourite from favourites WHERE idUser = ? and idExercise = ?
+            //     `,
+            //     [idUser, idExercise]
+            // );
 
-            return check2[0].favourite;
+            return check[0].favourite;
         }
     } finally {
         if (connection) connection.release();
