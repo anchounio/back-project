@@ -48,7 +48,7 @@ const likesExerciseQuery = async (idExercise, idUser) => {
                 [idUser, idExercise]
             );
 
-            return check[0].votes;
+            return check[0].vote;
         }
     } finally {
         if (connection) connection.release();

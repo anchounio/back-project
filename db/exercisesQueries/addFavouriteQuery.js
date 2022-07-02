@@ -20,7 +20,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
         }
 
         // Comprobamos si existe esta fila en la tabla
-        let [check] = await connection.query(
+        let [check2] = await connection.query(
             `
                 SELECT favourite from favourites WHERE idUser = ? and idExercise = ?                
             `,
@@ -28,7 +28,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
         );
 
         // Si no existe esa fila se crea
-        if (check.length < 1) {
+        if (check2.length < 1) {
             await connection.query(
                 `
                     INSERT INTO favourites (idUser, idExercise)
@@ -36,15 +36,15 @@ const addFavouriteQuery = async (idExercise, idUser) => {
                 `,
                 [idUser, idExercise]
             );
-            // Se selecciona y se devuelve el valor de favorito
-            // [check] = await connection.query(
+            //Se selecciona y se devuelve el valor de favorito
+            // [check2] = await connection.query(
             //     `
             //         SELECT favourite from favourites WHERE idUser = ? and idExercise = ?
             //     `,
             //     [idUser, idExercise]
             // );
 
-            return true;
+            //return true;
         } else {
             // Si la fila ya existía se cambia de true a false y viceversa
             await connection.query(
@@ -54,15 +54,15 @@ const addFavouriteQuery = async (idExercise, idUser) => {
                 [idUser, idExercise]
             );
 
-            // // Se comprueba ahora el estado en el que está (0 o 1)
-            // const [check2] = await connection.query(
-            //     `
-            //         SELECT favourite from favourites WHERE idUser = ? and idExercise = ?
-            //     `,
-            //     [idUser, idExercise]
-            // );
+            // Se comprueba ahora el estado en el que está (0 o 1)
+            const [check2] = await connection.query(
+                `
+                    SELECT favourite from favourites WHERE idUser = ? and idExercise = ?
+                `,
+                [idUser, idExercise]
+            );
 
-            return check[0].favourite;
+            return check2[0].favourite;
         }
     } finally {
         if (connection) connection.release();
