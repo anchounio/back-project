@@ -24,7 +24,8 @@ const selectFavouriteExercises = async (idUser) => {
                 404
             );
         }
-
+        console.log('estos son los favoritos');
+        console.log(exercises[0]);
         return exercises;
     } finally {
         if (connection) connection.release();

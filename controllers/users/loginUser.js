@@ -35,12 +35,14 @@ const loginUser = async (req, res, next) => {
         });
 
         const role = user.role;
+        const idUser = user.id;
 
         res.send({
             status: 'ok',
             data: {
                 token,
                 role,
+                idUser,
             },
         });
     } catch (err) {

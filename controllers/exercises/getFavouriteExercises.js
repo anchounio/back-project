@@ -4,12 +4,12 @@ const getFavouriteExercises = async (req, res, next) => {
     try {
         const idUser = req.user.id;
 
-        const exercise = await selectFavouriteExercises(idUser);
+        const exercises = await selectFavouriteExercises(idUser);
 
         res.send({
             status: 'ok',
             data: {
-                exercise,
+                exercises,
             },
         });
     } catch (err) {
