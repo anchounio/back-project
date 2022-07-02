@@ -5,15 +5,19 @@ const { generateError } = require('../../helpers');
 const selectExerciseById = async (idUser, idExercise) => {
     let connection;
 
-    console.log('la id de usuario es');
-    console.log(idUser);
-
     try {
         connection = await getConnection();
 
+        const [likesCounter] = await connection.query(
+            `
+            SELECT COUNT(vote) as VOTE from likes WHERE idExercise = ? and vote = true
+            `,
+            [idExercise]
+        );
+
         const [exercises] = await connection.query(
             `
-            SELECT  e.id AS idEjercicio, e.name, e.photo, e.description, e.typology, e.muscularGroup, e.createAt, u.id AS idUsuario, SUM(IFNULL(l.vote = 1, 0)) AS likes, IFNULL(f.favourite = 1, 0) AS favourites, BIT_OR(l.idUser = ? AND l.vote = 1) AS likedByMe, BIT_OR(f.idUser = 1 AND f.favourite = 1) AS favedByMe
+            SELECT e.id AS idEjercicio, ? AS totalLikes, e.name, e.photo, e.description, e.typology, e.muscularGroup, e.createAt, u.id AS idUsuario, BIT_OR(l.idUser = ? AND l.vote = 1) AS likedByMe, BIT_OR(f.idUser = ? AND f.favourite = 1) AS favedByMe
             FROM exercises e
             LEFT JOIN likes l
             ON e.id = l.idExercise
@@ -23,7 +27,7 @@ const selectExerciseById = async (idUser, idExercise) => {
             ON e.id = f.idExercise
             WHERE e.id = ?
             `,
-            [idUser, idExercise]
+            [likesCounter[0].VOTE, idUser, idUser, idExercise]
         );
 
         if (exercises.length < 1) {
