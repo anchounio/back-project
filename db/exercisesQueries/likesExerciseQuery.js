@@ -29,7 +29,7 @@ const likesExerciseQuery = async (idExercise, idUser) => {
             [idUser, idExercise]
         );
         // Si no existe esa fila se crea
-        if (check.length < 1) {
+        if (check.length === 0) {
             await connection.query(
                 `
                     INSERT INTO likes (idUser, idExercise)

@@ -28,7 +28,7 @@ const addFavouriteQuery = async (idExercise, idUser) => {
         );
 
         // Si no existe esa fila se crea
-        if (check2.length < 1) {
+        if (check2.length === 0) {
             await connection.query(
                 `
                     INSERT INTO favourites (idUser, idExercise)
@@ -36,15 +36,15 @@ const addFavouriteQuery = async (idExercise, idUser) => {
                 `,
                 [idUser, idExercise]
             );
-            //Se selecciona y se devuelve el valor de favorito
-            // [check2] = await connection.query(
-            //     `
-            //         SELECT favourite from favourites WHERE idUser = ? and idExercise = ?
-            //     `,
-            //     [idUser, idExercise]
-            // );
+            // Se selecciona y se devuelve el valor de favorito
+            [check2] = await connection.query(
+                `
+                    SELECT favourite from favourites WHERE idUser = ? and idExercise = ?
+                `,
+                [idUser, idExercise]
+            );
 
-            //return true;
+            return check2[0].favourite;
         } else {
             // Si la fila ya existía se cambia de true a false y viceversa
             await connection.query(
