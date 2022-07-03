@@ -1,6 +1,6 @@
 const getConnection = require('../getConnection');
 
-const { generateError } = require('../../helpers');
+// const { generateError } = require('../../helpers');
 
 const likesCounterQuery = async (idExercise) => {
     let connection;
