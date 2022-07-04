@@ -17,7 +17,7 @@ const selectExerciseById = async (idUser, idExercise) => {
 
         const [exercises] = await connection.query(
             `
-            SELECT e.id AS idEjercicio, ? AS totalLikes, e.name, e.photo, e.description, e.typology, e.muscularGroup, e.createAt, u.id AS idUsuario, BIT_OR(l.idUser = ? AND l.vote = 1) AS likedByMe, BIT_OR(f.idUser = ? AND f.favourite = 1) AS favedByMe
+            SELECT e.id AS idEjercicio, ? AS totalLikes, e.name, e.photo, e.description, e.typology, e.muscularGroup, e.createAt, ? AS idUsuario, BIT_OR(l.idUser = ? AND l.vote = 1) AS likedByMe, BIT_OR(f.idUser = ? AND f.favourite = 1) AS favedByMe
             FROM exercises e
             LEFT JOIN likes l
             ON e.id = l.idExercise
@@ -27,7 +27,7 @@ const selectExerciseById = async (idUser, idExercise) => {
             ON e.id = f.idExercise
             WHERE e.id = ?
             `,
-            [likesCounter[0].VOTE, idUser, idUser, idExercise]
+            [likesCounter[0].VOTE, idUser, idUser, idUser, idExercise]
         );
 
         if (exercises.length < 1) {
