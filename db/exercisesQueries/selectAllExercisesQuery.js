@@ -71,7 +71,7 @@ const selectAllExercisesQuery = async (typology, muscular) => {
         }
 
         if (exercises.length < 1) {
-            throw generateError('Ejercicio no encontrado', 404);
+            throw generateError('No existe ningún ejercicio', 404);
         }
 
         return exercises;
